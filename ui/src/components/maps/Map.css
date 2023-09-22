@@ -1,0 +1,31 @@
+.map {
+  position: relative;
+}
+
+.map .icon {
+  position: absolute;
+}
+
+.map .icon__car {
+  width: 16px;
+  top: 21px;
+  left: 63px;
+}
+
+.map .icon__person {
+  top: 580px;
+  left: 794px;
+  width: 32px;
+}
+
+#create-map {
+  /* Prevent dragging the image */
+  user-select: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
+
+#create-map .icon__car:hover {
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.1);
+}

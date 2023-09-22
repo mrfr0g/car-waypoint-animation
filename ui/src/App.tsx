@@ -5,6 +5,7 @@ import personIcon from "./assets/metaverse-person-12407.png";
 
 import "./App.css";
 import { MapMode, MapModeToggle } from "./components/toggles/MapModeToggle";
+import { CreateMap } from "./components/maps/CreateMap";
 
 function App() {
   const [mode, setMode] = useState<MapMode>("PLAY");
@@ -15,11 +16,7 @@ function App() {
 
   return (
     <div id="container">
-      <div id="map">
-        <img src={map} />
-        <img src={carIcon} id="car-icon" />
-        <img src={personIcon} id="person-icon" />
-      </div>
+      {mode === "CREATE" ? <CreateMap /> : null}
       <div id="controls">
         <MapModeToggle value={mode} onChange={setMode} />
       </div>
