@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import map from "./assets/city-map-vector-257842.jpg";
 import carIcon from "./assets/car-2893.png";
 import personIcon from "./assets/metaverse-person-12407.png";
 
 import "./App.css";
-
-type MapMode = "CREATE" | "PLAY";
+import { MapMode, MapModeToggle } from "./components/toggles/MapModeToggle";
 
 function App() {
   const [mode, setMode] = useState<MapMode>("PLAY");
+
+  useEffect(() => {
+    console.log("new mode", mode);
+  }, [mode]);
 
   return (
     <div>
@@ -18,7 +21,7 @@ function App() {
         <img src={personIcon} id="person-icon" />
       </div>
       <div id="controls">
-        <input type="checkbox" />
+        <MapModeToggle value={mode} onChange={setMode} />
       </div>
     </div>
   );
