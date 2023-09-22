@@ -11,7 +11,7 @@ export function CreateMap() {
   const { addWayPoint, removeWayPoint, wayPoints } = useMapContext();
 
   return (
-    <div id="create-map" className="map">
+    <div className="maps__create-map map">
       <img
         src={map}
         onClick={(e) => {

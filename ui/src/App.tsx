@@ -5,9 +5,10 @@ import { CreateMap } from "./components/maps/CreateMap";
 import { MapContextProvider } from "./contexts/MapContext";
 
 import "./App.css";
+import { WayPointSidebar } from "./components/sidebars/WaypointSidebar";
 
 function App() {
-  const [mode, setMode] = useState<MapMode>("PLAY");
+  const [mode, setMode] = useState<MapMode>("CREATE");
 
   useEffect(() => {
     console.log("new mode", mode);
@@ -17,8 +18,9 @@ function App() {
     <MapContextProvider>
       <div id="container">
         {mode === "CREATE" ? <CreateMap /> : null}
-        <div id="controls">
+        <div className="controls">
           <MapModeToggle value={mode} onChange={setMode} />
+          <WayPointSidebar />
         </div>
       </div>
     </MapContextProvider>

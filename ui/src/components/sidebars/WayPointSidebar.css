@@ -1,0 +1,27 @@
+.sidebars__waypoint-sidebar {
+  flex-grow: 1;
+
+  overflow: auto;
+  max-height: 400px;
+}
+
+.sidebars__waypoint-sidebar .waypoint-table .waypoint-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  gap: 8px;
+  font-family: monospace;
+  margin-bottom: 4px;
+}
+
+.sidebars__waypoint-sidebar .waypoint-table .waypoint-table__header {
+  font-weight: bold;
+}
+.sidebars__waypoint-sidebar .waypoint-table .id-cell {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebars__waypoint-sidebar .waypoint-table .control-cell {
+  text-align: right;
+}

@@ -18,14 +18,14 @@
   width: 32px;
 }
 
-#create-map img {
+.maps__create-map img {
   /* Prevent dragging the image */
   user-select: none;
   user-drag: none;
   -webkit-user-drag: none;
 }
 
-#create-map .icon__car:hover {
+.maps__create-map .icon__car:hover {
   border-radius: 50px;
   background: rgba(0, 0, 0, 0.1);
 }
