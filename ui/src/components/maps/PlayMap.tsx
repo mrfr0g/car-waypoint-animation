@@ -1,31 +1,35 @@
+import { useEffect, useState, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
+
 import map from "../../assets/city-map-vector-257842.jpg";
 import carIcon from "../../assets/car-2893.png";
 import { WayPoint, useMapContext } from "../../contexts/MapContext";
 
-import { useEffect, useState, useRef, useCallback } from "react";
-
-import { motion } from "framer-motion";
-
 import "./Map.css";
-
-// Just to mock an API call for the next waypoint
-let dataFetchIndex = 0;
 
 export function PlayMap() {
   const { wayPoints } = useMapContext();
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const timer = useRef<number>(0);
   const [visiblePoints, setVisiblePoints] = useState<WayPoint[]>([
     wayPoints[0],
   ]);
-  const currentPoint = visiblePoints[currentIndex];
+  const timer = useRef<number>(0);
   const waiting = useRef<boolean>(false);
+  // Just to mock an API call for the next waypoint
+  const dataFetchIndex = useRef<number>(0);
+
+  const currentPoint = visiblePoints[currentIndex];
+
+  useEffect(() => {
+    dataFetchIndex.current = 0;
+    setVisiblePoints([wayPoints[0]]);
+  }, []);
 
   // Fetch the next waypoint from our "api"
   useEffect(() => {
     timer.current = setInterval(() => {
-      const nextPoint = wayPoints[++dataFetchIndex];
+      const nextPoint = wayPoints[++dataFetchIndex.current];
 
       if (!nextPoint) {
         clearInterval(timer.current);

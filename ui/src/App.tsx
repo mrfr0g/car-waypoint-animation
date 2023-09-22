@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { MapMode, MapModeToggle } from "./components/toggles/MapModeToggle";
 import { CreateMap } from "./components/maps/CreateMap";
@@ -11,17 +11,13 @@ import { PlayMap } from "./components/maps/PlayMap";
 function App() {
   const [mode, setMode] = useState<MapMode>("CREATE");
 
-  useEffect(() => {
-    console.log("new mode", mode);
-  }, [mode]);
-
   return (
     <MapContextProvider>
       <div id="container">
         {mode === "CREATE" ? <CreateMap /> : <PlayMap />}
         <div className="controls">
           <MapModeToggle value={mode} onChange={setMode} />
-          <WayPointSidebar />
+          <WayPointSidebar allowRemove={mode === "CREATE"} />
         </div>
       </div>
     </MapContextProvider>
