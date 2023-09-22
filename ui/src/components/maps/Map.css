@@ -10,6 +10,7 @@
   width: 16px;
   top: 21px;
   left: 63px;
+  cursor: pointer;
 }
 
 .map .icon__person {
@@ -25,7 +26,9 @@
   -webkit-user-drag: none;
 }
 
-.maps__create-map .icon__car:hover {
+.maps__create-map .icon__car_hover {
   border-radius: 50px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 200, 0, 0.1);
+  transform: scale(1.2);
+  transition: all 0.75s;
 }

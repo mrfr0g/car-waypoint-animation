@@ -8,7 +8,13 @@ const CAR_ICON_WIDTH = 16;
 const CAR_ICON_HEIGHT = 16;
 
 export function CreateMap() {
-  const { addWayPoint, removeWayPoint, wayPoints } = useMapContext();
+  const {
+    addWayPoint,
+    removeWayPoint,
+    wayPoints,
+    shouldHighlight,
+    setHighlightId,
+  } = useMapContext();
 
   return (
     <div className="maps__create-map map">
@@ -25,14 +31,16 @@ export function CreateMap() {
         <img
           key={`icon_${n}_${point.id}`}
           src={carIcon}
-          className="icon icon__car"
+          className={`icon icon__car ${
+            shouldHighlight(point.id) ? "icon__car_hover" : ""
+          }`}
           style={{
             left: point.x,
             top: point.y,
           }}
-          onClick={() => {
-            removeWayPoint(point.id);
-          }}
+          onClick={() => removeWayPoint(point.id)}
+          onMouseOver={() => setHighlightId(point.id)}
+          onMouseOut={() => setHighlightId("")}
         />
       ))}
     </div>

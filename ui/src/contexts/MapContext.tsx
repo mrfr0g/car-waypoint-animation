@@ -10,7 +10,9 @@ export type WayPoint = {
 type MapContextState = {
   wayPoints: WayPoint[];
   addWayPoint: (pointX: number, pointY: number) => void;
-  removeWayPoint: (pointId: string) => void;
+  removeWayPoint: (pointId: WayPoint["id"]) => void;
+  setHighlightId: (pointId: WayPoint["id"]) => void;
+  shouldHighlight: (pointId: WayPoint["id"]) => boolean;
 };
 
 const MapContext = createContext<MapContextState | undefined>(undefined);
@@ -25,6 +27,7 @@ export function MapContextProvider({
   children,
 }: MapContextProviderProps) {
   const [wayPoints, setWayPoints] = useState<WayPoint[]>(initWayPoints ?? []);
+  const [highlightId, setHighlightId] = useState<WayPoint["id"]>("");
 
   const addWayPoint = useCallback(
     (pointX: number, pointY: number) => {
@@ -51,8 +54,21 @@ export function MapContextProvider({
     [wayPoints, setWayPoints]
   );
 
+  const shouldHighlight = useCallback(
+    (pointId: WayPoint["id"]) => pointId === highlightId,
+    [highlightId, wayPoints]
+  );
+
   return (
-    <MapContext.Provider value={{ wayPoints, addWayPoint, removeWayPoint }}>
+    <MapContext.Provider
+      value={{
+        wayPoints,
+        addWayPoint,
+        removeWayPoint,
+        setHighlightId,
+        shouldHighlight,
+      }}
+    >
       {children}
     </MapContext.Provider>
   );

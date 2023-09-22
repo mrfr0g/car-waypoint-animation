@@ -3,7 +3,7 @@ import { useMapContext } from "../../contexts/MapContext";
 import "./WayPointSidebar.css";
 
 export function WayPointSidebar() {
-  const { wayPoints } = useMapContext();
+  const { wayPoints, setHighlightId } = useMapContext();
 
   return (
     <div className="sidebars__waypoint-sidebar">
@@ -16,7 +16,12 @@ export function WayPointSidebar() {
           </div>
         </div>
         {wayPoints.map((point) => (
-          <div className="waypoint-table__row" key={point.id}>
+          <div
+            className="waypoint-table__row"
+            key={point.id}
+            onMouseOver={() => setHighlightId(point.id)}
+            onMouseOut={() => setHighlightId("")}
+          >
             <div className="waypoint-table__cell id-cell">{point.id}</div>
             <div className="waypoint-table__cell location-cell">
               {`${point.x},${point.y}`}

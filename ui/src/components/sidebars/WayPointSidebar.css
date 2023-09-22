@@ -11,6 +11,8 @@
   gap: 8px;
   font-family: monospace;
   margin-bottom: 4px;
+
+  cursor: pointer;
 }
 
 .sidebars__waypoint-sidebar .waypoint-table .waypoint-table__header {
