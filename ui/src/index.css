@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#map {
+  position: relative;
+}
+
+#car-icon,
+#person-icon {
+  position: absolute;
+}
+
+#car-icon {
+  width: 16px;
+  top: 21px;
+  left: 63px;
+}
+
+#person-icon {
+  top: 580px;
+  left: 794px;
+  width: 32px;
+}
