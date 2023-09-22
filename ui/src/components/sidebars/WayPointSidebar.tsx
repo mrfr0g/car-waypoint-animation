@@ -5,8 +5,6 @@ import "./WayPointSidebar.css";
 export function WayPointSidebar() {
   const { wayPoints, setHighlightId, removeWayPoint, reset } = useMapContext();
 
-  console.log("wayPoints", wayPoints);
-
   return (
     <div className="sidebars__waypoint-sidebar">
       {wayPoints.length === 0 ? (
