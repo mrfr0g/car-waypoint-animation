@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import map from "./assets/city-map-vector-257842.jpg";
-import carIcon from "./assets/car-2893.png";
-import personIcon from "./assets/metaverse-person-12407.png";
 
-import "./App.css";
 import { MapMode, MapModeToggle } from "./components/toggles/MapModeToggle";
 import { CreateMap } from "./components/maps/CreateMap";
+import { MapContextProvider } from "./contexts/MapContext";
+
+import "./App.css";
 
 function App() {
   const [mode, setMode] = useState<MapMode>("PLAY");
@@ -15,12 +14,14 @@ function App() {
   }, [mode]);
 
   return (
-    <div id="container">
-      {mode === "CREATE" ? <CreateMap /> : null}
-      <div id="controls">
-        <MapModeToggle value={mode} onChange={setMode} />
+    <MapContextProvider>
+      <div id="container">
+        {mode === "CREATE" ? <CreateMap /> : null}
+        <div id="controls">
+          <MapModeToggle value={mode} onChange={setMode} />
+        </div>
       </div>
-    </div>
+    </MapContextProvider>
   );
 }
 

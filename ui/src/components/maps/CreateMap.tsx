@@ -1,47 +1,14 @@
-import { useCallback, useState } from "react";
-import { v4 as uuid } from "uuid";
-
 import map from "../../assets/city-map-vector-257842.jpg";
 import carIcon from "../../assets/car-2893.png";
+import { useMapContext } from "../../contexts/MapContext";
 
 import "./Map.css";
-
-type WayPoint = {
-  id: string;
-  x: number;
-  y: number;
-};
 
 const CAR_ICON_WIDTH = 16;
 const CAR_ICON_HEIGHT = 16;
 
 export function CreateMap() {
-  const [wayPoints, setWayPoints] = useState<WayPoint[]>([]);
-
-  const handleDeleteWayPoint = useCallback(
-    (pointId: string) => {
-      const newWayPoints = wayPoints.filter(
-        (currentPoint) => currentPoint.id !== pointId
-      );
-      setWayPoints(newWayPoints);
-    },
-    [wayPoints, setWayPoints]
-  );
-
-  const handleCreateWayPoint = useCallback(
-    (pointX: number, pointY: number) => {
-      const point: WayPoint = {
-        id: uuid(),
-        x: pointX,
-        y: pointY,
-      };
-
-      const newWayPoints = [...wayPoints, point];
-
-      setWayPoints(newWayPoints);
-    },
-    [wayPoints, setWayPoints]
-  );
+  const { addWayPoint, removeWayPoint, wayPoints } = useMapContext();
 
   return (
     <div id="create-map" className="map">
@@ -51,7 +18,7 @@ export function CreateMap() {
           const pointX = e.nativeEvent.offsetX - CAR_ICON_WIDTH / 2;
           const pointY = e.nativeEvent.offsetY - CAR_ICON_HEIGHT / 2;
 
-          handleCreateWayPoint(pointX, pointY);
+          addWayPoint(pointX, pointY);
         }}
       />
       {wayPoints.map((point, n) => (
@@ -64,7 +31,7 @@ export function CreateMap() {
             top: point.y,
           }}
           onClick={() => {
-            handleDeleteWayPoint(point.id);
+            removeWayPoint(point.id);
           }}
         />
       ))}

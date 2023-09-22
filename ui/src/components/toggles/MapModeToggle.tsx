@@ -7,8 +7,12 @@ interface MapModeToggleProps {
   onChange?: (newValue: MapMode) => void;
 }
 
-function isChecked(value: MapMode) {
+function isPlay(value: MapMode) {
   return value === "PLAY";
+}
+
+function isCreate(value: MapMode) {
+  return !isPlay(value);
 }
 
 function getMode(value: boolean): MapMode {
@@ -22,14 +26,14 @@ export function MapModeToggle({ value, onChange }: MapModeToggleProps) {
         <div className="control">
           <div
             className={`control__label ${
-              value === "CREATE" ? "control__label_selected" : ""
+              isCreate(value) ? "control__label_selected" : ""
             }`}
           >
             Create waypoints
           </div>
           <div
             className={`control__label ${
-              value === "PLAY" ? "control__label_selected" : ""
+              isPlay(value) ? "control__label_selected" : ""
             }`}
           >
             Start car
@@ -37,12 +41,21 @@ export function MapModeToggle({ value, onChange }: MapModeToggleProps) {
         </div>
         <input
           type="checkbox"
-          checked={isChecked(value)}
+          checked={isPlay(value)}
           onChange={(e) => {
             onChange?.(getMode(e.target.checked));
           }}
         />
       </label>
+
+      <div className="info">
+        {isCreate(value) && (
+          <p>
+            In this mode click on the map to create a series of waypoints, then
+            press 'Start car' to watch the car travel the path.
+          </p>
+        )}
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@
   width: 32px;
 }
 
-#create-map {
+#create-map img {
   /* Prevent dragging the image */
   user-select: none;
   user-drag: none;
