@@ -14,7 +14,7 @@ function App() {
   }, [mode]);
 
   return (
-    <div>
+    <div id="container">
       <div id="map">
         <img src={map} />
         <img src={carIcon} id="car-icon" />

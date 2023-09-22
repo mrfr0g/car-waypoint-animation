@@ -4,6 +4,15 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 #map {

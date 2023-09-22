@@ -1,3 +1,25 @@
 .toggles__map-mode-toggle {
-  background: green;
+  position: relative;
+}
+
+.toggles__map-mode-toggle .control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.toggles__map-mode-toggle .control .control__label {
+  width: fit-content;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.toggles__map-mode-toggle .control .control__label_selected {
+  color: rgba(0, 125, 0, 1);
 }

@@ -17,13 +17,32 @@ function getMode(value: boolean): MapMode {
 
 export function MapModeToggle({ value, onChange }: MapModeToggleProps) {
   return (
-    <input
-      className="toggles__map-mode-toggle"
-      type="checkbox"
-      checked={isChecked(value)}
-      onChange={(e) => {
-        onChange?.(getMode(e.target.checked));
-      }}
-    />
+    <div className="toggles__map-mode-toggle">
+      <label>
+        <div className="control">
+          <div
+            className={`control__label ${
+              value === "CREATE" ? "control__label_selected" : ""
+            }`}
+          >
+            Create waypoints
+          </div>
+          <div
+            className={`control__label ${
+              value === "PLAY" ? "control__label_selected" : ""
+            }`}
+          >
+            Start car
+          </div>
+        </div>
+        <input
+          type="checkbox"
+          checked={isChecked(value)}
+          onChange={(e) => {
+            onChange?.(getMode(e.target.checked));
+          }}
+        />
+      </label>
+    </div>
   );
 }
