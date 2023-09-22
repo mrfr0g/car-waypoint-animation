@@ -26,6 +26,8 @@ export function CreateMap() {
 
           addWayPoint(pointX, pointY);
         }}
+        width={1000}
+        height={1000}
       />
       {wayPoints.map((point, n) => (
         <img

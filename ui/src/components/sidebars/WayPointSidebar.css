@@ -27,3 +27,8 @@
 .sidebars__waypoint-sidebar .waypoint-table .control-cell {
   text-align: right;
 }
+
+.sidebars__waypoint-sidebar .waypoint-empty-state {
+  text-align: center;
+  font-family: monospace;
+}
