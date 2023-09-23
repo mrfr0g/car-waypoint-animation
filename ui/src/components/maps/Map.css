@@ -28,7 +28,7 @@
 
 .maps__create-map .icon__car_hover {
   border-radius: 50px;
-  background: rgba(0, 200, 0, 0.1);
+  background: rgba(0, 200, 220, 0.33);
   transform: scale(1.2);
   transition: all 0.75s;
 }
